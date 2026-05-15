@@ -1,0 +1,152 @@
+/* Button — foundation action control. */
+
+.nos-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-none);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--motion-duration-state) var(--motion-easing-standard),
+    border-color var(--motion-duration-state) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-state) var(--motion-easing-standard),
+    color var(--motion-duration-state) var(--motion-easing-standard),
+    transform var(--motion-duration-feedback) var(--motion-easing-standard);
+}
+
+.nos-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.nos-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nos-btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+}
+
+.nos-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nos-btn__icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────────── */
+
+.nos-btn--sm {
+  height: 28px;
+  padding: 0 var(--spacing-3);
+  font-size: var(--font-size-xs);
+}
+
+.nos-btn--md {
+  height: 36px;
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-sm);
+}
+
+.nos-btn--icon-only.nos-btn--sm {
+  width: 28px;
+  padding: 0;
+}
+
+.nos-btn--icon-only.nos-btn--md {
+  width: 36px;
+  padding: 0;
+}
+
+/* ── Variant: primary ──────────────────────────────────────────────────── */
+
+.nos-btn--primary {
+  background: var(--color-brand-600);
+  color: #ffffff;
+}
+
+.nos-btn--primary:hover:not(:disabled) {
+  background: var(--color-brand-700);
+}
+
+.nos-btn--primary:active:not(:disabled) {
+  background: var(--color-brand-800);
+}
+
+/* ── Variant: secondary ────────────────────────────────────────────────── */
+
+.nos-btn--secondary {
+  background: #ffffff;
+  color: var(--color-neutral-900);
+  border-color: var(--border-brand-alpha-20);
+}
+
+.nos-btn--secondary:hover:not(:disabled) {
+  background: var(--color-brand-50);
+  border-color: var(--border-brand-alpha-30);
+}
+
+.nos-btn--secondary:active:not(:disabled) {
+  background: var(--color-brand-100);
+}
+
+/* ── Variant: ghost ────────────────────────────────────────────────────── */
+
+.nos-btn--ghost {
+  background: transparent;
+  color: var(--color-neutral-700);
+}
+
+.nos-btn--ghost:hover:not(:disabled) {
+  background: var(--color-neutral-100);
+}
+
+.nos-btn--ghost:active:not(:disabled) {
+  background: var(--color-neutral-200);
+}
+
+/* ── Variant: soft — inline / table CTA (e.g. "+ Note") ────────────────── */
+
+.nos-btn--soft {
+  background: var(--color-brand-50);
+  color: var(--color-brand-700);
+}
+
+.nos-btn--soft:hover:not(:disabled) {
+  background: var(--color-brand-100);
+}
+
+.nos-btn--soft:active:not(:disabled) {
+  background: var(--color-brand-200);
+}
+
+/* ── Variant: link — "View All →" pattern ──────────────────────────────── */
+
+.nos-btn--link {
+  background: transparent;
+  color: var(--color-brand-600);
+  padding: 0;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.nos-btn--link:hover:not(:disabled) {
+  color: var(--color-brand-700);
+}
+
+.nos-btn--link:active:not(:disabled) {
+  color: var(--color-brand-800);
+}

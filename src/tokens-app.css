@@ -1,0 +1,44 @@
+:root {
+  /* L1 Experience classification uses the brand accent because these are primary human-facing surfaces. */
+  --color-type-experience: var(--color-brand-500);
+  /* L1 Workflow classification uses info because these items represent active process movement. */
+  --color-type-workflow: var(--color-semantic-info-600);
+  /* L1 Integration classification uses warning because these items bridge external dependencies. */
+  --color-type-integration: var(--color-semantic-warning-600);
+  /* L1 Foundation classification uses neutral because these items are structural platform capabilities. */
+  --color-type-foundation: var(--color-neutral-500);
+  /* Draft engagement status uses neutral to indicate work exists but is not yet ready for review. */
+  --status-draft: var(--color-neutral-400);
+  /* Ready engagement status uses info to indicate reviewable progress rather than approval. */
+  --status-ready: var(--color-semantic-info-600);
+  /* Approved engagement status uses success to indicate formal internal approval. */
+  --status-approved: var(--color-semantic-success-600);
+  /* Blocked engagement status uses error to indicate a stop-work dependency. */
+  --status-blocked: var(--color-semantic-error-600);
+  /* Workspace rail width keeps contextual evidence visible without competing with the active task. */
+  --scope-right-rail-width: calc(var(--spacing-24) * 3);
+  /* Workspace content width keeps authoring rows readable on wide desktop displays. */
+  --scope-content-max-width: calc(var(--spacing-24) * 12);
+  /* Entity row indentation step supports L1 to L4 hierarchy without adding extra type sizes. */
+  --scope-hierarchy-indent: var(--spacing-4);
+  /* Diagram placeholder height gives architecture artifacts a stable preview footprint. */
+  --scope-diagram-placeholder-height: calc(var(--spacing-24) * 2);
+}
+
+:root {
+  /* ── Status background tints ─────────────────────────────────────────────
+   * Used in table rows, cards, and badge surface-tint variants.
+   * ──────────────────────────────────────────────────────────────────────── */
+  --status-draft-bg:    var(--color-neutral-25);
+  --status-ready-bg:    var(--color-semantic-info-50);
+  --status-approved-bg: var(--color-semantic-success-50);
+  --status-blocked-bg:  var(--color-semantic-error-50);
+
+  /* ── L1 type background tints ────────────────────────────────────────────
+   * Used in type badges, column headers, and diagram node fills.
+   * ──────────────────────────────────────────────────────────────────────── */
+  --color-type-experience-bg:  var(--color-brand-50);
+  --color-type-workflow-bg:    var(--color-semantic-info-50);
+  --color-type-integration-bg: var(--color-semantic-warning-50);
+  --color-type-foundation-bg:  var(--color-neutral-50);
+}

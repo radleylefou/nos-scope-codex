@@ -1,0 +1,14 @@
+/* Textarea — multi-line variant of the shared .nos-field chrome. */
+
+.nos-field--textarea {
+  align-items: stretch;
+  padding: var(--spacing-2) var(--spacing-3);
+  min-height: auto;
+}
+
+.nos-field__control--textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}

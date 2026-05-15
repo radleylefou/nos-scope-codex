@@ -1,0 +1,17 @@
+/* Select — native dropdown using shared .nos-field chrome with a caret icon. */
+
+.nos-field__control--select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: var(--spacing-1);
+}
+
+.nos-field__control--select::-ms-expand {
+  display: none;
+}
+
+.nos-field--disabled .nos-field__control--select {
+  cursor: not-allowed;
+}

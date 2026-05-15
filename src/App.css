@@ -1,0 +1,2237 @@
+.scope-app {
+  min-height: 100%;
+  display: grid;
+  background: var(--bg-canvas);
+  color: var(--fg-default);
+}
+
+.scope-app--dashboard {
+  grid-template-columns: var(--side-nav-width) minmax(0, 1fr);
+}
+
+.scope-app--workspace {
+  grid-template-columns: var(--side-nav-width) minmax(0, 1fr) var(--scope-right-rail-width);
+}
+
+.scope-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-default);
+}
+
+.scope-topbar {
+  min-height: var(--side-nav-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-topbar__context,
+.scope-topbar__actions,
+.scope-epic-card__meta,
+.scope-sow__component-header > div {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.scope-topbar__context {
+  min-width: 0;
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+}
+
+.scope-topbar__context span:first-child,
+.scope-topbar__title-group strong {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-topbar__context--workspace {
+  gap: var(--spacing-4);
+}
+
+.scope-topbar__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  min-width: 0;
+}
+
+.scope-topbar__title-group span,
+.scope-topbar__title-group strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope-content {
+  width: min(100%, var(--scope-content-max-width));
+  margin: 0 auto;
+  padding: var(--spacing-6);
+}
+
+.scope-section {
+  margin-top: var(--spacing-6);
+}
+
+.scope-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.scope-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  align-items: stretch;
+}
+
+.scope-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.scope-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-4);
+  align-items: stretch;
+}
+
+.scope-user-card,
+.scope-domain-column,
+.scope-epic-card,
+.scope-phase-column,
+.scope-output-tile,
+.scope-info-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.scope-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+}
+
+.scope-section-label,
+.scope-table__row--head,
+.scope-domain-column__header h2,
+.scope-phase-column__header h2 {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+}
+
+.scope-metric strong {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.scope-metric p,
+.scope-domain-column__description,
+.scope-user-card p,
+.scope-info-block p,
+.scope-diagram-placeholder p,
+.scope-phase-card p,
+.scope-rail p,
+.scope-sow__epic p {
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.scope-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.scope-form-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(calc(var(--spacing-24) * 3), 0.36fr);
+  gap: var(--spacing-6);
+  align-items: stretch;
+}
+
+.scope-content .nos-dc,
+.scope-content .nos-document-section,
+.scope-content .nos-pt {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.scope-content .nos-dc__body,
+.scope-content .nos-document-section__body {
+  flex: 1;
+}
+
+.scope-content .nos-dc__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-content .nos-dc__body > * {
+  flex: 1;
+}
+
+.scope-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.scope-filter-chip {
+  min-height: var(--spacing-7);
+  padding: 0 var(--spacing-3);
+  color: var(--fg-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.scope-filter-chip:hover,
+.scope-filter-chip--active {
+  color: var(--fg-brand);
+  background: var(--color-brand-50);
+  border-color: var(--border-brand-alpha-20);
+}
+
+.scope-report-bars,
+.scope-simple-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-report-bars {
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+}
+
+.scope-report-bar-row {
+  display: grid;
+  grid-template-columns: minmax(var(--spacing-20), 0.7fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.scope-report-bar-row > span,
+.scope-simple-row span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-report-bar-row div {
+  height: var(--spacing-2);
+  overflow: hidden;
+  background: var(--bg-muted);
+  border-radius: var(--radius-full);
+}
+
+.scope-report-bar-row div span {
+  display: block;
+  height: 100%;
+  background: var(--color-brand-500);
+}
+
+.scope-simple-table {
+  padding: var(--spacing-3);
+}
+
+.scope-simple-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(var(--spacing-20), 0.7fr) auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-simple-row:last-child {
+  border-bottom: 0;
+}
+
+.scope-simple-row strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-simple-row--button {
+  width: 100%;
+  color: inherit;
+  background: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.scope-simple-row--button:hover {
+  background: var(--bg-subtle);
+}
+
+.scope-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-table__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, auto);
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-table__row:last-child {
+  border-bottom: 0;
+}
+
+.scope-table__strong,
+.scope-list__title,
+.scope-rollup__row strong,
+.scope-sow__component-header strong {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+}
+
+.scope-lifecycle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+}
+
+.scope-lifecycle__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-width: 0;
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-lifecycle__item--button {
+  width: 100%;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition:
+    background-color var(--motion-duration-state) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-state) var(--motion-easing-standard);
+}
+
+.scope-lifecycle__item--button:hover {
+  background: var(--bg-muted);
+}
+
+.scope-lifecycle__item--button:focus-visible,
+.scope-placeholder-card--button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-lifecycle__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  color: var(--fg-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
+}
+
+.scope-lifecycle__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--fg-default);
+  font-weight: var(--font-weight-medium);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope-lifecycle__dot,
+.scope-type-dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+}
+
+.scope-lifecycle__dot--approved,
+.scope-checklist__mark--checked {
+  background: var(--status-approved);
+}
+
+.scope-lifecycle__dot--reviewed,
+.scope-lifecycle__dot--pending {
+  background: var(--status-ready);
+}
+
+.scope-lifecycle__dot--in-progress,
+.scope-type-dot--experience {
+  background: var(--color-type-experience);
+}
+
+.scope-lifecycle__dot--warning,
+.scope-lifecycle__dot--danger {
+  background: var(--status-blocked);
+}
+
+.scope-lifecycle__dot--draft {
+  background: var(--status-draft);
+}
+
+.scope-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-list__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-list__row:last-child {
+  border-bottom: 0;
+}
+
+.scope-list__row > div,
+.scope-info-block,
+.scope-rail__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.scope-list__meta {
+  display: block;
+  margin-top: var(--spacing-1);
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-narrative {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+}
+
+.scope-document-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+}
+
+.scope-info-block,
+.scope-user-card {
+  padding: var(--spacing-4);
+}
+
+.scope-user-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+}
+
+.scope-user-card h3,
+.scope-epic-card h3,
+.scope-phase-card h3,
+.scope-sow__epic h3,
+.scope-rail h2,
+.scope-sow__header h2 {
+  margin: 0;
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.scope-user-card > span {
+  display: block;
+  margin-top: var(--spacing-1);
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-user-card .nos-description-list {
+  margin-top: var(--spacing-4);
+}
+
+.scope-document-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-document-row:last-child {
+  border-bottom: 0;
+}
+
+.scope-document-row p {
+  margin-top: var(--spacing-2);
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.scope-tech-needs,
+.scope-domain-list,
+.scope-validation,
+.scope-review-states,
+.scope-story-estimates,
+.scope-variance-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-tech-need {
+  display: grid;
+  grid-template-columns: minmax(calc(var(--spacing-24) * 2), 0.5fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-tech-need:last-child {
+  border-bottom: 0;
+}
+
+.scope-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.scope-toolbar__meta {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.scope-checklist__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  color: var(--fg-inverse);
+  background: var(--status-draft);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-diagram-placeholder {
+  min-height: var(--scope-diagram-placeholder-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  color: var(--fg-subtle);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.scope-placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+
+.scope-placeholder-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.scope-placeholder-card--button {
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.scope-placeholder-card--button:hover {
+  background: var(--bg-muted);
+}
+
+.scope-placeholder-card svg {
+  color: var(--fg-brand);
+}
+
+.scope-placeholder-card strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+}
+
+.scope-placeholder-card p {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-activity-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-activity-table__body {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.scope-activity-table__row {
+  display: grid;
+  grid-template-columns: minmax(var(--spacing-16), 0.55fr) minmax(0, 1.45fr) minmax(var(--spacing-20), 0.8fr);
+  align-items: center;
+  gap: var(--spacing-2) var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-activity-table__row:last-child {
+  border-bottom: 0;
+}
+
+.scope-activity-table__row .nos-status-pill {
+  grid-column: 2 / -1;
+  justify-self: start;
+}
+
+.scope-domain-board,
+.scope-phase-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(calc(var(--spacing-24) * 2), 1fr));
+  gap: var(--spacing-4);
+  align-items: start;
+}
+
+.scope-domain-column,
+.scope-phase-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  min-width: 0;
+}
+
+.scope-domain-column__header,
+.scope-phase-column__header,
+.scope-epic-card__header,
+.scope-sow__header,
+.scope-sow__component-header,
+.scope-phase-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.scope-domain-column__header > div {
+  min-width: 0;
+}
+
+.scope-domain-column__header p {
+  margin-top: var(--spacing-1);
+  color: var(--fg-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-type-dot--workflow {
+  background: var(--color-type-workflow);
+}
+
+.scope-type-dot--integration {
+  background: var(--color-type-integration);
+}
+
+.scope-type-dot--foundation {
+  background: var(--color-type-foundation);
+}
+
+.scope-epic-stack,
+.scope-phase-column__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-epic-card {
+  padding: var(--spacing-3);
+}
+
+.scope-epic-card__header > div {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.scope-epic-card__header {
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.scope-epic-card__header:focus-visible {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-epic-card__hours {
+  color: var(--fg-muted);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+}
+
+.scope-epic-card__meta {
+  flex-wrap: wrap;
+  margin-top: var(--spacing-3);
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-story-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
+  padding-left: var(--scope-hierarchy-indent);
+}
+
+.scope-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--spacing-2) var(--spacing-3);
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+}
+
+.scope-story p {
+  margin: 0;
+  line-height: var(--line-height-snug);
+}
+
+.scope-story ul {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin: 0;
+  padding-left: calc(var(--scope-hierarchy-indent) + var(--spacing-2));
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-domain-list__component {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-domain-list__component:first-child {
+  padding-top: 0;
+}
+
+.scope-domain-list__component:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.scope-domain-list__l1,
+.scope-domain-list__l2,
+.scope-domain-list__story {
+  display: grid;
+  align-items: start;
+  gap: var(--spacing-3);
+}
+
+.scope-domain-list__l1 {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.scope-domain-list__l2 {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-left: var(--scope-hierarchy-indent);
+}
+
+.scope-domain-list__story {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-left: calc(var(--scope-hierarchy-indent) * 2);
+}
+
+.scope-domain-list__l1 strong,
+.scope-domain-list__l2 strong,
+.scope-domain-list__story strong {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-domain-list__l1 span,
+.scope-domain-list__l2 span,
+.scope-domain-list__story p,
+.scope-domain-list__story li {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+}
+
+.scope-domain-list__story ul {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin: 0;
+  padding-left: calc(var(--scope-hierarchy-indent) + var(--spacing-2));
+}
+
+.scope-domain-validation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+
+.scope-domain-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--spacing-5);
+  align-items: start;
+}
+
+.scope-domain-board-core {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(calc(var(--spacing-24) * 1.55), 1fr));
+  gap: var(--spacing-3);
+  align-items: start;
+  overflow-x: auto;
+  padding-bottom: var(--spacing-2);
+}
+
+.scope-domain-type-column {
+  display: flex;
+  min-width: calc(var(--spacing-24) * 1.55);
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.scope-domain-type-column__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-domain-type-column__header strong {
+  flex: 1;
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-domain-type-column__body,
+.scope-domain-epic-list,
+.scope-story-stack,
+.scope-ac-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-domain-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+  align-items: start;
+}
+
+.scope-domain-component-card,
+.scope-add-card,
+.scope-domain-epic-row,
+.scope-hierarchy-row {
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+}
+
+.scope-domain-component-card,
+.scope-add-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-domain-component-card {
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-state) var(--motion-easing-standard),
+    border-color var(--motion-duration-state) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-state) var(--motion-easing-standard);
+}
+
+.scope-domain-component-card:hover,
+.scope-domain-component-card--active {
+  background: var(--bg-muted);
+  border-color: var(--border-brand-alpha-20);
+}
+
+.scope-domain-component-card:focus-visible,
+.scope-add-card:focus-visible,
+.scope-domain-epic-row:focus-visible,
+.scope-hierarchy-row:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-domain-component-card__header,
+.scope-domain-card-meta,
+.scope-phase-dots {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.scope-domain-component-card__header {
+  justify-content: space-between;
+}
+
+.scope-domain-component-card strong,
+.scope-domain-epic-row strong,
+.scope-story-card strong,
+.scope-ac-row strong,
+.scope-hierarchy-row strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.scope-domain-component-card p,
+.scope-story-card p {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-domain-card-meta {
+  flex-wrap: wrap;
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-add-card {
+  align-items: center;
+  justify-content: center;
+  min-height: var(--spacing-16);
+  color: var(--fg-brand);
+  background: var(--bg-subtle);
+  border-style: dashed;
+  cursor: pointer;
+}
+
+.scope-phase-dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-100);
+}
+
+.scope-phase-dot--active {
+  background: var(--color-brand-500);
+}
+
+.scope-domain-epic-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.scope-domain-epic-row--active,
+.scope-domain-epic-row:hover {
+  background: var(--bg-muted);
+}
+
+.scope-domain-epic-row div,
+.scope-ac-row div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-domain-epic-row span,
+.scope-ac-row span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-story-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-ac-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--spacing-3);
+  align-items: start;
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-ac-row:last-child {
+  border-bottom: 0;
+}
+
+.scope-hierarchy-table {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.scope-hierarchy-row {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--spacing-20), 0.65fr)
+    minmax(calc(var(--spacing-24) * 1.75), 1fr)
+    minmax(calc(var(--spacing-24) * 2), 1.25fr)
+    minmax(var(--spacing-16), 0.45fr)
+    minmax(var(--spacing-20), 0.5fr)
+    minmax(var(--spacing-20), 0.65fr);
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: calc(var(--spacing-24) * 7.5);
+  padding: var(--spacing-3);
+  background: var(--bg-surface);
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+}
+
+.scope-hierarchy-row--head {
+  color: var(--fg-subtle);
+  background: var(--bg-subtle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.scope-estimation-table,
+.scope-reconciliation-table,
+.scope-rollup-tree,
+.scope-team-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-estimation-table {
+  overflow-x: auto;
+}
+
+.scope-estimation-row {
+  display: grid;
+  grid-template-columns:
+    minmax(calc(var(--spacing-24) * 2.5), 1.6fr)
+    minmax(calc(var(--spacing-24) * 1.5), 0.9fr)
+    minmax(calc(var(--spacing-24) * 1.35), 0.8fr)
+    minmax(var(--spacing-20), 0.5fr)
+    minmax(var(--spacing-20), 0.5fr)
+    minmax(var(--spacing-16), 0.4fr)
+    minmax(var(--spacing-16), 0.45fr)
+    minmax(var(--spacing-16), 0.4fr)
+    minmax(var(--spacing-20), 0.55fr);
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: calc(var(--spacing-24) * 11);
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-estimation-row--head,
+.scope-reconciliation-row--head {
+  color: var(--fg-subtle);
+  background: var(--bg-subtle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.scope-estimation-row > span:first-child {
+  color: var(--fg-default);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-reconciliation-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(var(--spacing-20), 0.65fr) minmax(var(--spacing-20), 0.65fr) auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-rollup-phase {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-rollup-phase:last-child {
+  border-bottom: 0;
+}
+
+.scope-rollup-tree__row,
+.scope-rollup-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--spacing-3);
+  align-items: center;
+  padding: var(--spacing-2) 0;
+}
+
+.scope-rollup-tree__row--phase {
+  padding-top: var(--spacing-4);
+  color: var(--fg-default);
+}
+
+.scope-rollup-component {
+  padding-left: var(--scope-hierarchy-indent);
+}
+
+.scope-rollup-epic {
+  padding-left: calc(var(--scope-hierarchy-indent) * 2);
+}
+
+.scope-rollup-story {
+  padding-left: calc(var(--scope-hierarchy-indent) * 3);
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+}
+
+.scope-phase-board-v2 {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(calc(var(--spacing-24) * 1.6), 1fr));
+  gap: var(--spacing-3);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-2);
+}
+
+.scope-phase-column-v2 {
+  display: flex;
+  min-width: calc(var(--spacing-24) * 1.6);
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.scope-phase-column-v2__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-phase-column-v2__header h2,
+.scope-phase-epic-card h3 {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.scope-phase-column-v2__header span,
+.scope-phase-epic-card p,
+.scope-empty-phase {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-phase-column-v2__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+}
+
+.scope-phase-epic-card,
+.scope-empty-phase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-empty-phase {
+  align-items: center;
+  justify-content: center;
+  min-height: var(--spacing-16);
+  background: var(--bg-subtle);
+  border-style: dashed;
+}
+
+.scope-gantt-v2 {
+  display: flex;
+  flex-direction: column;
+  min-width: calc(var(--spacing-24) * 9);
+  overflow-x: auto;
+}
+
+.scope-gantt-v2__weeks,
+.scope-gantt-v2__milestones,
+.scope-gantt-v2__row {
+  display: grid;
+  grid-template-columns: calc(var(--spacing-24) * 2.25) repeat(var(--timeline-weeks), minmax(var(--spacing-10), 1fr));
+  align-items: center;
+}
+
+.scope-gantt-v2__weeks {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.scope-gantt-v2__weeks span,
+.scope-gantt-v2__milestones span {
+  padding: var(--spacing-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-gantt-v2__milestones span:not(:first-child) {
+  color: var(--fg-brand);
+  font-size: var(--font-size-2xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-gantt-v2__row {
+  min-height: var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-gantt-v2__label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2);
+}
+
+.scope-gantt-v2__label strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-gantt-v2__label span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-2xs);
+}
+
+.scope-gantt-v2__bar {
+  margin: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  color: var(--fg-default);
+  background: var(--color-brand-50);
+  border: 1px solid var(--border-brand-alpha-20);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.scope-gantt-v2__bar--workflow {
+  background: var(--color-semantic-info-50);
+}
+
+.scope-gantt-v2__bar--integration {
+  background: var(--color-semantic-warning-50);
+}
+
+.scope-gantt-v2__bar--foundation {
+  background: var(--color-neutral-50);
+}
+
+.scope-team-row {
+  display: grid;
+  grid-template-columns: minmax(calc(var(--spacing-24) * 1.4), 1fr) minmax(var(--spacing-20), 0.75fr) minmax(var(--spacing-20), 0.75fr) minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--spacing-3);
+  align-items: start;
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-team-row:last-child {
+  border-bottom: 0;
+}
+
+.scope-team-row span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-governance-table {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.scope-governance-row {
+  display: grid;
+  grid-template-columns: minmax(calc(var(--spacing-24) * 2.4), 1.5fr) minmax(calc(var(--spacing-24) * 1.2), 0.8fr) minmax(var(--spacing-20), 0.55fr) minmax(var(--spacing-20), 0.55fr) minmax(var(--spacing-20), 0.55fr);
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  min-width: calc(var(--spacing-24) * 6.5);
+  padding: var(--spacing-3);
+  color: inherit;
+  background: var(--bg-surface);
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: inherit;
+  text-align: left;
+}
+
+.scope-governance-row:not(.scope-governance-row--head) {
+  cursor: pointer;
+}
+
+.scope-governance-row:not(.scope-governance-row--head):hover,
+.scope-governance-row--active {
+  background: var(--bg-muted);
+}
+
+.scope-governance-row:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-governance-row--head {
+  color: var(--fg-subtle);
+  background: var(--bg-subtle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.scope-governance-row span {
+  overflow: hidden;
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+  text-overflow: ellipsis;
+}
+
+.scope-review-checklist,
+.scope-review-group,
+.scope-output-grid-v2,
+.scope-output-card-v2,
+.scope-doc-preview main,
+.scope-preview-tiles,
+.scope-preview-columns,
+.scope-preview-columns > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.scope-review-checklist {
+  gap: var(--spacing-5);
+}
+
+.scope-review-group {
+  gap: var(--spacing-3);
+}
+
+.scope-review-group h3 {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-review-check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-review-check span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+}
+
+.scope-output-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-4);
+}
+
+.scope-output-card-v2 {
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  color: inherit;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.scope-output-card-v2:hover,
+.scope-output-card-v2--active {
+  background: var(--bg-muted);
+  border-color: var(--border-brand-alpha-20);
+}
+
+.scope-output-card-v2:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-output-card-v2__header,
+.scope-output-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.scope-output-card-v2 strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-output-card-v2 p,
+.scope-output-card-v2 span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-output-card-v2 > .nos-status-pill {
+  align-self: stretch;
+  min-height: var(--spacing-7);
+  line-height: var(--line-height-snug);
+  text-align: center;
+  white-space: normal;
+}
+
+.scope-output-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.scope-doc-preview {
+  display: grid;
+  grid-template-columns: minmax(var(--spacing-24), 0.35fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.scope-doc-preview aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: var(--bg-subtle);
+  border-right: 1px solid var(--border-default);
+}
+
+.scope-doc-preview aside span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-2xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-doc-preview main {
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+}
+
+.scope-doc-preview h2 {
+  color: var(--fg-default);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-tight);
+}
+
+.scope-doc-preview p,
+.scope-preview-tiles span,
+.scope-preview-columns span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.scope-preview-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+
+.scope-preview-tiles div,
+.scope-preview-columns > div {
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.scope-preview-tiles strong,
+.scope-preview-columns strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-preview-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+
+.scope-rollup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-rollup__row {
+  display: grid;
+  grid-template-columns: minmax(calc(var(--spacing-24) * 2), 1fr) minmax(calc(var(--spacing-24) * 3), 2fr) auto;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.scope-rollup__row > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-rollup__row span {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-rollup__bar {
+  height: var(--spacing-2);
+  overflow: hidden;
+  background: var(--bg-muted);
+  border-radius: var(--radius-full);
+}
+
+.scope-rollup__bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-brand-500);
+}
+
+.scope-variance-table__head,
+.scope-variance-table__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.scope-variance-table__head {
+  padding-bottom: var(--spacing-2);
+  color: var(--fg-subtle);
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+}
+
+.scope-variance-table__row {
+  padding: var(--spacing-3) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.scope-variance-table__row > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-variance-table__row strong {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-variance-table__row span {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.scope-story-estimates__body {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+.scope-story-estimates__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) auto auto;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-story-estimates__row:last-child {
+  border-bottom: 0;
+}
+
+.scope-phase-board {
+  overflow-x: auto;
+}
+
+.scope-phase-card,
+.scope-empty-state,
+.scope-output-tile,
+.scope-sow__epic {
+  padding: var(--spacing-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-phase-card {
+  flex-direction: column;
+}
+
+.scope-phase-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.scope-empty-state {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+.scope-gantt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  min-width: calc(var(--spacing-24) * 8);
+}
+
+.scope-gantt__scale,
+.scope-gantt__row,
+.scope-gantt__milestones {
+  display: grid;
+  grid-template-columns: calc(var(--spacing-24) * 2) repeat(12, minmax(var(--spacing-8), 1fr));
+  gap: var(--spacing-2);
+}
+
+.scope-gantt__scale {
+  color: var(--fg-subtle);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
+}
+
+.scope-gantt__scale span {
+  grid-column: span 1;
+}
+
+.scope-gantt__scale::before,
+.scope-gantt__milestones::before {
+  content: '';
+}
+
+.scope-gantt__label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-gantt__label strong,
+.scope-gantt__milestone strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-gantt__label span {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-2xs);
+}
+
+.scope-gantt__track {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(var(--spacing-8), 1fr));
+  min-height: var(--spacing-8);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-gantt__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-1);
+  color: var(--fg-inverse);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
+}
+
+.scope-gantt__bar--experience { background: var(--color-type-experience); }
+.scope-gantt__bar--workflow { background: var(--color-type-workflow); }
+.scope-gantt__bar--integration { background: var(--color-type-integration); }
+.scope-gantt__bar--foundation { background: var(--color-type-foundation); }
+
+.scope-gantt__milestones {
+  margin-top: var(--spacing-2);
+  align-items: start;
+}
+
+.scope-gantt__milestone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-gantt__milestone span {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  background: var(--color-brand-500);
+  border-radius: var(--radius-full);
+}
+
+.scope-output-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--spacing-3);
+}
+
+.scope-output-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-output-tile > span:last-child {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-output-tile p {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-validation__row,
+.scope-review-state {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.scope-validation__row:last-child,
+.scope-review-state:last-child {
+  border-bottom: 0;
+}
+
+.scope-validation__row > div,
+.scope-review-state > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-validation__row strong,
+.scope-review-state strong {
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.scope-validation__row span,
+.scope-review-state span,
+.scope-review-state p {
+  color: var(--fg-subtle);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-review-state {
+  flex-wrap: wrap;
+}
+
+.scope-review-state p {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.scope-sow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.scope-sow__header {
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-sow__component {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-sow__component-header {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+}
+
+.scope-sow__epic {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--spacing-2) var(--spacing-4);
+}
+
+.scope-sow__epic p {
+  grid-column: 1 / -1;
+}
+
+.scope-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  min-width: 0;
+  padding: var(--spacing-5);
+  background: var(--bg-surface);
+}
+
+.scope-rail__section {
+  padding-bottom: var(--spacing-5);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.scope-rail__section:last-child {
+  border-bottom: 0;
+}
+
+.scope-rail__heading,
+.scope-rail__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.scope-rail__meta {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.scope-rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scope-rail-list li {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  color: var(--fg-inverse);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  color: var(--color-brand-950);
+  background: var(--fg-inverse);
+  border-radius: var(--radius-md);
+}
+
+.scope-workspace-stub {
+  align-items: stretch;
+}
+
+.scope-workflow-grid {
+  align-items: stretch;
+}
+
+.scope-upload-zone {
+  display: flex;
+  min-height: calc(var(--spacing-24) * 1.35);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-6);
+  color: var(--fg-muted);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.scope-upload-zone svg {
+  color: var(--fg-brand);
+}
+
+.scope-upload-zone strong {
+  color: var(--fg-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+.scope-upload-zone p,
+.scope-file-row span,
+.scope-choice-detail p,
+.scope-record-row span {
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+.scope-file-list,
+.scope-record-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.scope-file-row {
+  display: grid;
+  grid-template-columns: var(--spacing-5) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.scope-file-row svg {
+  color: var(--fg-brand);
+}
+
+.scope-file-row div,
+.scope-record-row div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.scope-file-row strong,
+.scope-choice-detail strong,
+.scope-record-row strong {
+  overflow: hidden;
+  color: var(--fg-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope-ai-draft,
+.scope-choice-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.scope-ai-draft__header,
+.scope-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.scope-record-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: var(--spacing-3);
+  color: inherit;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  text-align: left;
+}
+
+.scope-record-row:not(.scope-record-row--static) {
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-state) var(--motion-easing-standard),
+    border-color var(--motion-duration-state) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-state) var(--motion-easing-standard);
+}
+
+.scope-record-row:not(.scope-record-row--static):hover,
+.scope-record-row--active {
+  background: var(--bg-muted);
+  border-color: var(--border-brand-alpha-20);
+}
+
+.scope-record-row:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.scope-tech-needs {
+  gap: var(--spacing-4);
+}
+
+.scope-stub-requirements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.scope-stub-requirement {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.scope-stub-requirement:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+@media (max-width: 1180px) {
+  .scope-app--workspace,
+  .scope-app--dashboard {
+    grid-template-columns: var(--side-nav-width) minmax(0, 1fr);
+  }
+
+  .scope-rail {
+    display: none;
+  }
+
+  .scope-grid--two,
+  .scope-narrative,
+  .scope-document-grid,
+  .scope-user-groups,
+  .scope-metrics,
+  .scope-dashboard-grid,
+  .scope-domain-board,
+  .scope-domain-detail,
+  .scope-output-grid,
+  .scope-placeholder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .scope-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nos-side-nav {
+    display: none;
+  }
+
+  .scope-topbar,
+  .scope-topbar__actions,
+  .scope-topbar__context {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .scope-content {
+    padding: var(--spacing-4);
+  }
+
+  .scope-grid--two,
+  .scope-narrative,
+  .scope-document-grid,
+  .scope-user-groups,
+  .scope-metrics,
+  .scope-dashboard-grid,
+  .scope-domain-board,
+  .scope-domain-validation,
+  .scope-domain-detail,
+  .scope-output-grid,
+  .scope-placeholder-grid,
+  .scope-timeline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scope-table__row,
+  .scope-rollup__row,
+  .scope-activity-table__row,
+  .scope-file-row,
+  .scope-record-row,
+  .scope-tech-need,
+  .scope-variance-table__head,
+  .scope-variance-table__row,
+  .scope-story-estimates__row,
+  .scope-domain-list__l1,
+  .scope-domain-list__l2,
+  .scope-domain-list__story,
+  .scope-sow__epic {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scope-gantt {
+    overflow-x: auto;
+  }
+}
