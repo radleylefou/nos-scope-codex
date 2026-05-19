@@ -16,7 +16,7 @@
 .nos-th__title-area {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 2px; /* hairline gap between title and subtext — below spacing scale */
   margin-right: auto;
 }
 
@@ -39,13 +39,13 @@
 .nos-th__search {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-2);
   width: 240px;
-  height: 34px;
-  padding: 0 var(--spacing-2) 0 10px;
-  background: #ffffff;
+  height: var(--control-height-lg);
+  padding: 0 var(--spacing-2);
+  background: var(--bg-surface);
   border: 1px solid var(--color-brand-100);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
@@ -77,15 +77,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-2xs);
   font-weight: var(--font-weight-medium);
   color: var(--color-neutral-400);
-  background: #ffffff;
-  border: 1px solid #d3d3e7;
-  border-radius: 4px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xs);
   flex-shrink: 0;
   line-height: var(--line-height-none);
 }

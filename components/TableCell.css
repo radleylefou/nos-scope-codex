@@ -54,14 +54,14 @@
   align-items: center;
   flex-shrink: 0;
   color: var(--color-neutral-400);
-  width: 18px;
-  height: 18px;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
 }
 
 .nos-tc__icon svg,
 .nos-tc__icon img {
-  width: 18px;
-  height: 18px;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
 }
 
 /* ── TableCellLink ───────────────────────────────────────────────────────── */

@@ -52,12 +52,12 @@
 }
 
 .nos-field--sm {
-  min-height: 28px;
+  min-height: var(--control-height-xs);
   padding: 0 var(--spacing-2);
 }
 
 .nos-field--md {
-  min-height: 36px;
+  min-height: var(--control-height-xl);
   padding: 0 var(--spacing-3);
 }
 
@@ -97,8 +97,8 @@
 }
 
 .nos-field__icon svg {
-  width: 14px;
-  height: 14px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   display: block;
 }
 

@@ -74,8 +74,8 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
   padding: 0;
   border: 0;
   border-radius: var(--radius-sm);

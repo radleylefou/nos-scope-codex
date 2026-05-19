@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   AssistBar,
   AIActionBar,
+  Badge,
   Button,
   Callout,
   Checkbox,
@@ -12,6 +13,7 @@ import {
   DocumentSection,
   FieldRow,
   Input,
+  KanbanBoard,
   Modal,
   NeedsAttention,
   PageHeader,
@@ -445,7 +447,7 @@ function PortfolioReporting({ onOpenEngagement }) {
                     <strong>{item.owner}</strong>
                     <span>{item.role}</span>
                     <span>{item.engagements} engagements</span>
-                    <StatusPill variant={item.blockers > 2 ? 'warning' : 'reviewed'} label={`${item.blockers} blockers`} />
+                    <Badge tone={item.blockers > 2 ? 'warning' : 'success'}>{item.blockers} blockers</Badge>
                   </div>
                 ))}
               </div>
@@ -460,7 +462,7 @@ function PortfolioReporting({ onOpenEngagement }) {
                     <strong>{item.client}</strong>
                     <span>{item.blocker}</span>
                     <span>{item.owner}</span>
-                    <StatusPill variant={item.severity === 'High' ? 'warning' : 'pending'} label={item.severity} />
+                    <Badge tone={item.severity === 'High' ? 'warning' : 'neutral'}>{item.severity}</Badge>
                   </button>
                 ))}
               </div>
@@ -498,6 +500,7 @@ function AdminScreen() {
           <AdminSettingsSection title="Governance Rules" rows={adminSettings.governanceRules} />
           <AdminSettingsSection title="Output Settings" rows={adminSettings.outputSettings} />
           <AdminTeamDefaults rows={adminSettings.teamDefaults} />
+          <AdminProcessSource />
         </div>
       </section>
     </>
@@ -512,7 +515,7 @@ function AdminSettingsSection({ title, rows }) {
           <div className="scope-simple-row" key={row.name}>
             <strong>{row.name}</strong>
             <span>{row.setting}</span>
-            <StatusPill variant={row.status === 'Active' ? 'reviewed' : 'pending'} label={row.status} />
+            <Badge tone={row.status === 'Active' ? 'success' : 'neutral'}>{row.status}</Badge>
           </div>
         ))}
       </div>
@@ -528,10 +531,24 @@ function AdminTeamDefaults({ rows }) {
           <div className="scope-simple-row" key={row.role}>
             <strong>{row.role}</strong>
             <span>{row.defaultOwner}</span>
-            <StatusPill variant={row.required === 'Yes' ? 'warning' : 'pending'} label={row.required === 'Yes' ? 'Required' : 'Optional'} />
+            <Badge tone={row.required === 'Yes' ? 'warning' : 'neutral'}>{row.required === 'Yes' ? 'Required' : 'Optional'}</Badge>
           </div>
         ))}
       </div>
+    </DocumentSection>
+  );
+}
+
+function AdminProcessSource() {
+  return (
+    <DocumentSection header={<SectionHeader title="Process Source" status="reviewed" statusLabel="SPEC.md" />}>
+      <DescriptionList
+        items={[
+          { label: 'Build source', value: 'Project-local SPEC.md translates the PRD into entities, screens, sample data, validation, and build phases.' },
+          { label: 'Workbench source', value: 'NOS Product Patterns, token rules, reusable components, and app-specific semantic tokens.' },
+          { label: 'Template rule', value: 'Scope-specific specs stay in this app context and are not reusable workbench templates.' },
+        ]}
+      />
     </DocumentSection>
   );
 }
@@ -667,7 +684,7 @@ function IntakeScreen({ data }) {
                   <strong>{file.name}</strong>
                   <span>{file.type} · {file.size}</span>
                 </div>
-                <StatusPill variant="pending" label={file.tag} />
+                <Badge tone="neutral">{file.tag}</Badge>
               </div>
             ))}
           </div>
@@ -689,7 +706,7 @@ function IntakeScreen({ data }) {
         >
           <div className="scope-ai-draft">
             <div className="scope-ai-draft__header">
-              <StatusPill variant="brand" label={data.aiSummary.title} />
+              <Badge tone="brand">{data.aiSummary.title}</Badge>
               <span className="scope-mono">{data.aiSummary.generatedAt}</span>
             </div>
             <DescriptionList
@@ -825,6 +842,10 @@ function SolutionIntroduction({ data }) {
   return (
     <div className="scope-grid scope-grid--two scope-workflow-grid">
       <DocumentSection header={<SectionHeader title="Client Profile" status="pending" statusLabel={data.status} />}>
+        <div className="scope-badge-row">
+          <Badge tone={data.status === 'Reviewed' ? 'success' : 'warning'}>{data.status}</Badge>
+          <Badge tone="neutral">Client context</Badge>
+        </div>
         <Textarea label="Client Profile" rows={4} defaultValue={data.clientProfile} />
         <Textarea label="Organizational Context" rows={4} defaultValue={data.organizationalContext} />
         <Textarea label="Engagement Origin" rows={3} defaultValue={data.engagementOrigin} />
@@ -834,6 +855,11 @@ function SolutionIntroduction({ data }) {
         header={<SectionHeader title="Strategic Framing" status="pending" statusLabel="Review" />}
         footer={<AssistBar label="Inline actions:" actions={[{ label: 'Edit' }, { label: 'Review' }, { label: 'Approve' }]} />}
       >
+        <div className="scope-badge-row">
+          <Badge tone="brand">Problem</Badge>
+          <Badge tone="info">Opportunity</Badge>
+          <Badge tone="neutral">Traceable to intake</Badge>
+        </div>
         <Textarea label="Problem Statement" helperText={`${data.problemStatement.length} characters`} rows={5} defaultValue={data.problemStatement} />
         <Textarea label="Opportunity Statement" rows={5} defaultValue={data.opportunityStatement} />
       </DocumentSection>
@@ -873,9 +899,9 @@ function SolutionPainPoints({ items }) {
                 <strong>{item.title}</strong>
                 <span>{item.affectedGroups}</span>
               </div>
-              <StatusPill variant={item.severity === 'High' ? 'danger' : 'warning'} label={item.severity} />
-              <StatusPill variant="pending" label={item.category} />
-              {item.epicLinks.length === 0 && <StatusPill variant="warning" label="No Epic" />}
+              <Badge tone={item.severity === 'High' ? 'danger' : 'warning'}>{item.severity}</Badge>
+              <Badge tone="neutral">{item.category}</Badge>
+              {item.epicLinks.length === 0 && <Badge tone="warning">No Epic</Badge>}
             </button>
           ))}
         </div>
@@ -917,8 +943,8 @@ function SolutionWishList({ items }) {
               <strong>{item.title}</strong>
               <span>{item.detail}</span>
             </div>
-            <StatusPill variant={item.priority === 'Must' ? 'danger' : item.priority === 'Should' ? 'warning' : 'pending'} label={item.priority} />
-            <StatusPill variant="brand" label={item.linkedPainPoints.length.toString()} />
+            <Badge tone={getPriorityBadgeTone(item.priority)}>{item.priority}</Badge>
+            <Badge tone="brand">{item.linkedPainPoints.length}</Badge>
           </div>
         ))}
       </div>
@@ -1025,7 +1051,7 @@ function DomainBoard({ data, selectedComponentId, onSelectComponent }) {
             <div className="scope-domain-type-column__header">
               <span className={`scope-type-dot scope-type-dot--${type.toLowerCase()}`} />
               <strong>{type}</strong>
-              <StatusPill variant="pending" label={String(components.length)} />
+              <Badge tone="neutral">{components.length}</Badge>
             </div>
             <div className="scope-domain-type-column__body">
               {components.map((component) => (
@@ -1037,13 +1063,13 @@ function DomainBoard({ data, selectedComponentId, onSelectComponent }) {
                 >
                   <div className="scope-domain-component-card__header">
                     <strong>{component.name}</strong>
-                    <StatusPill variant={component.status === 'warning' ? 'warning' : component.status === 'draft' ? 'draft' : 'reviewed'} label={component.type} />
+                    <Badge tone={getComponentTypeBadgeTone(component.type)}>{component.type}</Badge>
                   </div>
                   <p>{component.description}</p>
                   <div className="scope-domain-card-meta">
                     <span>{component.epics.length} Epics</span>
                     <span className="scope-mono">{formatNumber(getComponentHours(component))}h</span>
-                    <StatusPill variant={component.traceability === 'warning' ? 'warning' : 'approved'} label={component.traceability === 'warning' ? 'Needs trace' : 'Traced'} />
+                    <Badge tone={component.traceability === 'warning' ? 'warning' : 'success'}>{component.traceability === 'warning' ? 'Needs trace' : 'Traced'}</Badge>
                   </div>
                   <PhaseDots phases={getComponentPhases(component)} />
                 </button>
@@ -1093,7 +1119,7 @@ function DomainDetailPane({ component }) {
                 <strong>{epic.name}</strong>
                 <span>{epic.stories.length} stories · {epic.linkedPainPoints.length || 'No'} pain links</span>
               </div>
-              <StatusPill variant={epic.phase === 'Phase 1' ? 'reviewed' : 'pending'} label={epic.phase} />
+              <Badge tone={epic.phase === 'Phase 1' ? 'success' : 'neutral'}>{epic.phase}</Badge>
               <span className="scope-mono">{getEpicHours(epic) ? `${formatNumber(getEpicHours(epic))}h` : 'Unestimated'}</span>
             </button>
           ))}
@@ -1170,7 +1196,7 @@ function DomainListView({ data, onSelectComponent }) {
               <strong>{epic.name}</strong>
               <span>{epic.stories.length}</span>
               <span className="scope-mono">{getEpicHours(epic) ? `${formatNumber(getEpicHours(epic))}h` : 'Unestimated'}</span>
-              <StatusPill variant={epic.status === 'Estimated' ? 'reviewed' : 'warning'} label={epic.status} />
+              <Badge tone={epic.status === 'Estimated' ? 'success' : 'warning'}>{epic.status}</Badge>
             </button>
           )),
         )}
@@ -1184,8 +1210,8 @@ function StoryCard({ story }) {
     <article className="scope-story-card">
       <p>{formatStory(story)}</p>
       <div className="scope-domain-card-meta">
-        <StatusPill variant={story.priority === 'Must' ? 'danger' : story.priority === 'Should' ? 'warning' : 'pending'} label={story.priority} />
-        <StatusPill variant={story.complexity === 'Complex' ? 'warning' : 'reviewed'} label={story.complexity} />
+        <Badge tone={getPriorityBadgeTone(story.priority)}>{story.priority}</Badge>
+        <Badge tone={story.complexity === 'Complex' ? 'warning' : 'success'}>{story.complexity}</Badge>
         <span className="scope-mono">{story.estimate ? `${story.estimate}h` : 'Unestimated'}</span>
         <span>{story.acceptanceCriteria.length} AC</span>
       </div>
@@ -1213,6 +1239,28 @@ function getEpicHours(epic) {
 
 function getComponentPhases(component) {
   return [...new Set(component.epics.map((epic) => epic.phase))];
+}
+
+function getPriorityBadgeTone(priority) {
+  if (priority === 'Must') return 'danger';
+  if (priority === 'Should') return 'warning';
+  return 'neutral';
+}
+
+function getComponentTypeBadgeTone(type) {
+  if (type === 'Experience') return 'experience';
+  if (type === 'Workflow') return 'workflow';
+  if (type === 'Integration') return 'info';
+  return 'item';
+}
+
+function getBadgeToneFromVariant(variant) {
+  if (['approved', 'reviewed', 'success'].includes(variant)) return 'success';
+  if (variant === 'warning') return 'warning';
+  if (variant === 'danger') return 'danger';
+  if (variant === 'brand') return 'brand';
+  if (variant === 'info') return 'info';
+  return 'neutral';
 }
 
 function formatStory(story) {
@@ -1305,12 +1353,12 @@ function EstimationTable({ stories }) {
             <span>{formatStory(story)}</span>
             <span>{story.epicName}</span>
             <span>{story.componentName}</span>
-            <StatusPill variant={story.phase === 'Phase 1' ? 'reviewed' : 'pending'} label={story.phase} />
-            <StatusPill variant={story.complexity === 'Complex' ? 'warning' : 'reviewed'} label={story.complexity} />
+            <Badge tone={story.phase === 'Phase 1' ? 'success' : 'neutral'}>{story.phase}</Badge>
+            <Badge tone={story.complexity === 'Complex' ? 'warning' : 'success'}>{story.complexity}</Badge>
             <span className="scope-mono">{story.estimate ? `${story.estimate}h` : 'Unestimated'}</span>
             <Input size="sm" aria-label={`Override for ${story.id}`} defaultValue="" placeholder="-" />
             <span className="scope-mono">{story.estimate ? `${story.estimate}h` : 'TBD'}</span>
-            <StatusPill variant={story.estimate ? 'reviewed' : 'warning'} label={story.estimate ? 'AI Suggested' : 'Unestimated'} />
+            <Badge tone={story.estimate ? 'success' : 'warning'}>{story.estimate ? 'AI Suggested' : 'Unestimated'}</Badge>
           </div>
         ))}
       </div>
@@ -1379,7 +1427,7 @@ function EstimationReconciliation({ rollup, plan }) {
                 <strong>{phase}</strong>
                 <span>{formatCurrency(envelope)}</span>
                 <span>{formatCurrency(actual)}</span>
-                <StatusPill variant={delta > envelope * 0.1 ? 'danger' : delta > 0 ? 'warning' : 'approved'} label={`${delta <= 0 ? '-' : '+'}${formatCurrency(Math.abs(delta))}`} />
+                <Badge tone={delta > envelope * 0.1 ? 'danger' : delta > 0 ? 'warning' : 'success'}>{`${delta <= 0 ? '-' : '+'}${formatCurrency(Math.abs(delta))}`}</Badge>
               </div>
             );
           })}
@@ -1480,6 +1528,25 @@ function PlanningPhasing({ domain, plan, rollup }) {
       hours: getEpicHours(epic),
     })),
   );
+  const columns = plan.phaseOrder.map((phase) => {
+    const phaseEpics = epics.filter((epic) => epic.phase === phase);
+    const target = plan.phaseTargets[phase] ?? { hours: 0, budget: 0 };
+    const hours = rollup.phaseHours[phase] ?? 0;
+
+    return {
+      id: phase.toLowerCase().replace(/\s+/g, '-'),
+      label: phase,
+      probability: `${formatNumber(hours)}h`,
+      tone: getPhaseKanbanTone(phase, hours, target.hours),
+      cards: phaseEpics.map((epic) => ({
+        id: epic.id,
+        title: epic.name,
+        date: epic.componentName,
+        amount: epic.hours ? `${formatNumber(epic.hours)}h` : 'TBD',
+        eyebrow: `${epic.componentType} · ${epic.status}`,
+      })),
+    };
+  });
 
   return (
     <div className="scope-stack">
@@ -1502,39 +1569,17 @@ function PlanningPhasing({ domain, plan, rollup }) {
         ))}
       </div>
 
-      <div className="scope-phase-board-v2">
-        {plan.phaseOrder.map((phase) => {
-          const phaseEpics = epics.filter((epic) => epic.phase === phase);
-          const target = plan.phaseTargets[phase] ?? { hours: 0, budget: 0 };
-          return (
-            <section className="scope-phase-column-v2" key={phase}>
-              <header className="scope-phase-column-v2__header">
-                <div>
-                  <h2>{phase}</h2>
-                  <span>{phaseEpics.length} Epics · {formatNumber(rollup.phaseHours[phase] ?? 0)}h</span>
-                </div>
-                <StatusPill variant={(rollup.phaseHours[phase] ?? 0) > target.hours ? 'warning' : 'reviewed'} label={formatCurrency(target.budget)} />
-              </header>
-              <div className="scope-phase-column-v2__body">
-                {phaseEpics.map((epic) => (
-                  <article className="scope-phase-epic-card" key={epic.id}>
-                    <div className="scope-domain-card-meta">
-                      <StatusPill variant="pending" label={epic.componentType} />
-                      <span className="scope-mono">{epic.hours ? `${formatNumber(epic.hours)}h` : 'Unestimated'}</span>
-                    </div>
-                    <h3>{epic.name}</h3>
-                    <p>{epic.componentName}</p>
-                    <StatusPill variant={epic.status === 'Estimated' ? 'reviewed' : 'warning'} label={epic.status} />
-                  </article>
-                ))}
-                {phaseEpics.length === 0 && <div className="scope-empty-phase">No Epics assigned</div>}
-              </div>
-            </section>
-          );
-        })}
-      </div>
+      <KanbanBoard columns={columns} className="scope-phase-kanban" aria-label="Phase planning board" />
     </div>
   );
+}
+
+function getPhaseKanbanTone(phase, hours, targetHours) {
+  if (targetHours && hours > targetHours) return 'warning';
+  if (phase === 'Phase 1') return 'success';
+  if (phase === 'Phase 2') return 'brand';
+  if (phase === 'Future') return 'info';
+  return 'neutral';
 }
 
 function PlanningTimeline({ domain, plan }) {
@@ -1628,7 +1673,7 @@ function PlanningBudget({ plan, rollup }) {
                 <strong>{phase}</strong>
                 <span>{formatCurrency(envelope)}</span>
                 <span>{formatCurrency(actual)}</span>
-                <StatusPill variant={variance > 0 ? 'warning' : 'approved'} label={`${variance <= 0 ? '-' : '+'}${formatCurrency(Math.abs(variance))}`} />
+                <Badge tone={variance > 0 ? 'warning' : 'success'}>{`${variance <= 0 ? '-' : '+'}${formatCurrency(Math.abs(variance))}`}</Badge>
               </div>
             );
           })}
@@ -1762,7 +1807,7 @@ function GovernanceTable({ rows, selectedId, onSelect, columns, renderRow }) {
           >
             {cells.map((cell, index) => (
               index === cells.length - 1
-                ? <StatusPill key={`${row.id}-${index}`} variant={getGovernanceVariant(String(cell))} label={String(cell)} />
+                ? <Badge key={`${row.id}-${index}`} tone={getBadgeToneFromVariant(getGovernanceVariant(String(cell)))}>{String(cell)}</Badge>
                 : <span key={`${row.id}-${index}`}>{String(cell || 'None')}</span>
             ))}
           </button>
@@ -1822,7 +1867,7 @@ function ReviewScreen({ data }) {
                   <div className="scope-review-check" key={item.label}>
                     <Checkbox checked={item.status === 'passed'} disabled aria-label={item.label} />
                     <span>{item.label}</span>
-                    <StatusPill variant={item.status === 'passed' ? 'approved' : item.status === 'blocked' ? 'danger' : 'warning'} label={toLabel(item.status)} />
+                    <Badge tone={item.status === 'passed' ? 'success' : item.status === 'blocked' ? 'danger' : 'warning'}>{toLabel(item.status)}</Badge>
                   </div>
                 ))}
               </section>
@@ -1871,11 +1916,11 @@ function OutputsScreen({ data }) {
           >
             <div className="scope-output-card-v2__header">
               <strong>{artifact.title}</strong>
-              <StatusPill variant={artifact.status} label={artifact.format} />
+              <Badge tone={getBadgeToneFromVariant(artifact.status)}>{artifact.format}</Badge>
             </div>
             <p>{artifact.audience}</p>
             <span>{artifact.lastGenerated}</span>
-            <StatusPill variant={artifact.status} label={artifact.readiness} />
+            <Badge tone={getBadgeToneFromVariant(artifact.status)}>{artifact.readiness}</Badge>
             <div className="scope-output-actions">
               <Button size="sm">Generate</Button>
               <Button variant="secondary" size="sm">Preview</Button>
@@ -2064,7 +2109,7 @@ function RecentActivityTable() {
             <TableCellIcon icon={<ClockIcon />} text={activity.when} />
             <TableCellSubtext text={activity.event} subtext={activity.detail} />
             <TableCellText text={activity.owner} />
-            <StatusPill variant="reviewed" label={activity.stage} />
+            <Badge tone="success">{activity.stage}</Badge>
           </div>
         ))}
       </div>

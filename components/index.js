@@ -19,6 +19,7 @@ export { ChoiceGroup } from './ChoiceGroup.jsx';
 
 // ── Feedback ──────────────────────────────────────────────────────────────
 export { Callout } from './Callout.jsx';
+export { Badge } from './Badge.jsx';
 export { StatusPill } from './StatusPill.jsx';
 
 // ── Metrics ───────────────────────────────────────────────────────────────
@@ -53,3 +54,4 @@ export { TableCellText, TableCellSubtext, TableCellIcon, TableCellLink, TableCel
 export { RecentTimeEntries } from './RecentTimeEntries.jsx';
 export { PipelineTable } from './PipelineTable.jsx';
 export { PIPELINE_COLUMNS } from './pipelineColumns.js';
+export { KanbanBoard, KanbanColumn, KanbanCard } from './KanbanBoard.jsx';

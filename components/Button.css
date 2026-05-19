@@ -42,32 +42,32 @@
 }
 
 .nos-btn__icon svg {
-  width: 14px;
-  height: 14px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   display: block;
 }
 
 /* ── Sizes ─────────────────────────────────────────────────────────────── */
 
 .nos-btn--sm {
-  height: 28px;
+  height: var(--control-height-xs);
   padding: 0 var(--spacing-3);
   font-size: var(--font-size-xs);
 }
 
 .nos-btn--md {
-  height: 36px;
+  height: var(--control-height-xl);
   padding: 0 var(--spacing-4);
   font-size: var(--font-size-sm);
 }
 
 .nos-btn--icon-only.nos-btn--sm {
-  width: 28px;
+  width: var(--control-height-xs);
   padding: 0;
 }
 
 .nos-btn--icon-only.nos-btn--md {
-  width: 36px;
+  width: var(--control-height-xl);
   padding: 0;
 }
 
@@ -75,7 +75,7 @@
 
 .nos-btn--primary {
   background: var(--color-brand-600);
-  color: #ffffff;
+  color: var(--action-primary-fg);
 }
 
 .nos-btn--primary:hover:not(:disabled) {
@@ -89,7 +89,7 @@
 /* ── Variant: secondary ────────────────────────────────────────────────── */
 
 .nos-btn--secondary {
-  background: #ffffff;
+  background: var(--action-secondary-bg);
   color: var(--color-neutral-900);
   border-color: var(--border-brand-alpha-20);
 }

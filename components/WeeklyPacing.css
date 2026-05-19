@@ -36,25 +36,25 @@
 .nos-wp__bar-track {
   display: flex;
   align-items: stretch;
-  gap: 4px;
-  height: 34px;
+  gap: var(--spacing-1);
+  height: var(--control-height-lg);
   margin-bottom: var(--spacing-2);
 }
 
 .nos-wp__bar-segment {
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   display: block;
 }
 
 .nos-wp__bar-segment--logged {
   flex: 1 0 0;
-  min-width: 3px;
+  min-width: 3px; /* visual minimum so a small "logged" bar remains perceptible */
   background: var(--color-brand-500);
 }
 
 .nos-wp__bar-segment--today {
-  flex: 0 0 28px;
-  background: #57c99d;
+  flex: 0 0 var(--control-height-xs);
+  background: var(--color-dataviz-green-300);
 }
 
 .nos-wp__bar-segment--remaining {

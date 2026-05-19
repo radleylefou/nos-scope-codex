@@ -40,13 +40,13 @@
 }
 
 .nos-seg--sm .nos-seg__pill {
-  height: 28px;
+  height: var(--control-height-xs);
   padding: 0 var(--spacing-3);
   font-size: var(--font-size-xs);
 }
 
 .nos-seg--md .nos-seg__pill {
-  height: 32px;
+  height: var(--control-height-md);
   padding: 0 var(--spacing-4);
   font-size: var(--font-size-sm);
 }
@@ -69,7 +69,7 @@
 }
 
 .nos-seg__pill--active {
-  background: #ffffff;
+  background: var(--bg-surface);
   border-color: var(--color-brand-300);
   color: var(--color-brand-500);
 }
@@ -87,7 +87,7 @@
 }
 
 .nos-seg__icon svg {
-  width: 14px;
-  height: 14px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   display: block;
 }

@@ -1,7 +1,7 @@
 .scope-app {
   min-height: 100%;
   display: grid;
-  background: var(--bg-canvas);
+  background: var(--bg-surface);
   color: var(--fg-default);
 }
 
@@ -34,7 +34,8 @@
 .scope-topbar__context,
 .scope-topbar__actions,
 .scope-epic-card__meta,
-.scope-sow__component-header > div {
+.scope-sow__component-header > div,
+.scope-badge-row {
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
@@ -54,6 +55,10 @@
 
 .scope-topbar__context--workspace {
   gap: var(--spacing-4);
+}
+
+.scope-badge-row {
+  flex-wrap: wrap;
 }
 
 .scope-topbar__title-group {
@@ -1210,75 +1215,17 @@
   font-size: var(--font-size-xs);
 }
 
-.scope-phase-board-v2 {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(calc(var(--spacing-24) * 1.6), 1fr));
-  gap: var(--spacing-3);
-  overflow-x: auto;
-  padding-bottom: var(--spacing-2);
+.scope-phase-kanban {
+  padding: var(--spacing-1) 0 var(--spacing-4);
 }
 
-.scope-phase-column-v2 {
-  display: flex;
-  min-width: calc(var(--spacing-24) * 1.6);
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xs);
+.scope-phase-kanban .kanban-column {
+  flex-basis: calc(var(--spacing-24) * 2.55);
+  min-width: calc(var(--spacing-24) * 2.55);
 }
 
-.scope-phase-column-v2__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3);
-  background: var(--bg-subtle);
-  border-bottom: 1px solid var(--border-default);
-}
-
-.scope-phase-column-v2__header h2,
-.scope-phase-epic-card h3 {
-  color: var(--fg-default);
+.scope-phase-kanban .kanban-card__title {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-}
-
-.scope-phase-column-v2__header span,
-.scope-phase-epic-card p,
-.scope-empty-phase {
-  color: var(--fg-muted);
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-snug);
-}
-
-.scope-phase-column-v2__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3);
-}
-
-.scope-phase-epic-card,
-.scope-empty-phase {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-sm);
-}
-
-.scope-empty-phase {
-  align-items: center;
-  justify-content: center;
-  min-height: var(--spacing-16);
-  background: var(--bg-subtle);
-  border-style: dashed;
 }
 
 .scope-gantt-v2 {
